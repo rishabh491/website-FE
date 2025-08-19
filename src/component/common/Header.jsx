@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import img from "../../assets/Website-Logo.png"
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navigate=useNavigate()
 
   // Detect scroll
   useEffect(() => {
@@ -23,7 +25,7 @@ export default function Header() {
           : "bg-transparent" 
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+      <div className="w-full mx-auto px-4  lg:px-8 py-4 flex justify-between items-center">
         
         {/* Logo */}
         {/* <h1
@@ -33,12 +35,12 @@ export default function Header() {
         >
           Ram Vijay
         </h1> */}
-        <img src={img} className="h-14 w-60" />
+        <img onClick={()=>navigate("/")} src={img} className="h-14 w-60" />
 
         {/* Desktop Nav */}
        <nav
   className={`hidden md:flex gap-6 lg:gap-10 font-medium tracking-wide transition-colors duration-500 ${
-    scrolled ? "text-gray-100 drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]" : "text-gray-800"
+    scrolled ? "text-gray-100 drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)]" : "text-gray-100"
   }`}
 >
   <a href="#services" className="hover:text-indigo-400">Services</a>

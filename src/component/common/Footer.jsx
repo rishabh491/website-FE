@@ -5,7 +5,7 @@ export default function Footer() {
         
         {/* About */}
         <div>
-          <h2 className="text-lg sm:text-xl font-semibold text-white">Rishabh Sahani</h2>
+          <h2 className="text-lg sm:text-xl font-semibold text-white">Ram Vijay Sahani</h2>
           <p className="mt-3 text-gray-400 text-sm sm:text-base">
             Professional interior design and home planning solution 2d and 3d. 
             Bringing life to your spaces with colors and creativity.

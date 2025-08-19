@@ -3,9 +3,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import { motion } from "framer-motion";
 import logo from "../assets/Logo.png";
-import recent1 from "../assets/recent1.jpeg"
-import recent2 from "../assets/recent2.jpeg"
-import recent3 from "../assets/recent3.jpeg"
+import recent1 from "../assets/recent1.jpeg";
+import recent2 from "../assets/recent2.jpeg";
+import recent3 from "../assets/recent3.jpeg";
 import banner1 from "../assets/banner1.jpg";
 import banner2 from "../assets/banner2.jpg";
 import banner3 from "../assets/banner3.jpg";
@@ -25,8 +25,7 @@ const RecentWorks = () => {
     {
       img: recent3,
       location: "Borawar,Rajasthan",
-    }
-    
+    },
   ];
 
   const container = {
@@ -39,7 +38,7 @@ const RecentWorks = () => {
 
   const card = {
     hidden: { opacity: 0, y: 40 },
-    show: { opacity: 1, y: 0, transition: { type: "spring"} },
+    show: { opacity: 1, y: 0, transition: { type: "spring" } },
   };
 
   return (
@@ -92,33 +91,45 @@ const Home = () => {
   return (
     <div className="w-full">
       {/* ================= Hero / Banner ================= */}
-      <section className="h-screen w-full">
-        <Swiper
-          modules={[Pagination, Autoplay]}
-          pagination={{ clickable: true }}
-          autoplay={{ delay: 4000, disableOnInteraction: false }}
-          loop={true}
-          className="h-full"
+      <section
+        className="relative h-screen w-full bg-cover bg-center flex items-center justify-center"
+        style={{ backgroundImage: `url(${banner1})` }} // replace with your image
+      >
+        {/* Overlay (dark tint for readability) */}
+        <div className="absolute inset-0 bg-black/40"></div>
+
+        {/* Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="relative z-10 max-w-3xl px-6 text-center text-white"
         >
-          {[banner1,banner2].map((img, i) => (
-            <SwiperSlide key={i}>
-              <div
-                className="h-screen w-full bg-cover bg-center flex items-center justify-center"
-                style={{ backgroundImage: `url(${img})` }}
-              >
-                <motion.div
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1 }}
-                  className="bg-transparent bg-opacity-40 p-8 rounded-2xl text-center text-white max-w-2xl"
-                >
-                
-                </motion.div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold mb-6">
+            Transform Your <span className="text-indigo-400">Dream Home</span>
+          </h1>
+          <p className="text-base sm:text-lg lg:text-xl mb-8 text-gray-200 leading-relaxed">
+            We bring your ideas to life with modern interior designs, 2D & 3D
+            planning, and renovation expertise.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="#contact"
+              className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-xl font-medium text-white shadow-lg transition"
+            >
+              Contact Us
+            </a>
+            <a
+              href="#services"
+              className="px-6 py-3 bg-white text-gray-900 rounded-xl font-medium shadow-lg hover:bg-gray-100 transition"
+            >
+              Explore Services
+            </a>
+          </div>
+        </motion.div>
       </section>
+
 
       {/* ================= Recent Works ================= */}
       <RecentWorks />
@@ -178,30 +189,34 @@ const Home = () => {
       </section>
 
       {/* ================= About ================= */}
-      <section id="about" className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <section id="about" className="py-16 sm:py-20 bg-gray-50 overflow-x-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+          {/* Left Side (Image) */}
           <motion.div
             initial={{ opacity: 0, x: -80 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="w-full h-[400px] bg-black rounded-2xl shadow-lg flex items-center justify-center">
+            <div className="w-full aspect-square sm:aspect-[4/3] lg:aspect-[16/12] bg-black rounded-2xl shadow-lg flex items-center justify-center overflow-hidden">
               <img
                 src={logo}
                 alt="About Us"
-                className="max-h-full max-w-full object-fill scale-200 rounded-2xl"
+                className="w-full h-full object-cover rounded-2xl"
               />
             </div>
           </motion.div>
+
+          {/* Right Side (Text) */}
           <motion.div
             initial={{ opacity: 0, x: 80 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+            className="text-center lg:text-left"
           >
             <motion.h2
-              className="text-4xl sm:text-5xl font-extrabold text-center mb-16 text-gray-800"
+              className="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-6 sm:mb-10 text-gray-800"
               initial={{ opacity: 0, y: -30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -209,9 +224,9 @@ const Home = () => {
             >
               About <span className="text-indigo-600">Us</span>
             </motion.h2>
-            <p className="text-gray-700 leading-relaxed text-lg">
+            <p className="text-gray-700 leading-relaxed text-base sm:text-lg">
               With over 20 years of experience, we specialize in interior
-              designing and Home Planning works(2D&3d). Our mission is to
+              designing and Home Planning works (2D & 3D). Our mission is to
               transform houses into beautiful, welcoming homes that reflect your
               style.
               <br />
