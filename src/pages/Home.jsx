@@ -456,7 +456,450 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Portfolio Section continues in next file due to length... */}
+      {/* Portfolio Section */}
+      <section id="portfolio" className="py-24 bg-gray-50 relative">
+        <div className="max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <h2 className="text-4xl sm:text-5xl font-extrabold mb-6 text-gray-800">
+              Our <span className="gradient-text">Portfolio</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Explore our recent projects and see how we transform spaces into beautiful, functional environments
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {portfolioImages.map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10 }}
+                className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500"
+              >
+                <div className="relative h-80 overflow-hidden">
+                  <img
+                    src={item.img}
+                    alt={item.location}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  {/* Content */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                    <h3 className="text-xl font-bold mb-2">{item.location}</h3>
+                    <p className="text-indigo-300 font-medium mb-3">{item.type}</p>
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="bg-white/20 backdrop-blur-md border border-white/30 text-white px-4 py-2 rounded-lg font-medium hover:bg-white/30 transition-all duration-300"
+                    >
+                      View Details
+                    </motion.button>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="text-center mt-16"
+          >
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300"
+            >
+              Start Your Project
+              <ArrowRight size={20} />
+            </motion.a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section id="process" className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50/50 to-purple-50/50"></div>
+        
+        <div className="relative max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <h2 className="text-4xl sm:text-5xl font-extrabold mb-6 text-gray-800">
+              Our Design <span className="gradient-text">Process</span>
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              A systematic approach to creating your dream space, from initial consultation to final delivery
+            </p>
+          </motion.div>
+
+          <div className="relative">
+            {/* Process Steps */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {[
+                {
+                  step: "01",
+                  title: "Consultation",
+                  desc: "We start with understanding your vision, needs, and budget through detailed consultation.",
+                  icon: Lightbulb,
+                  color: "from-blue-500 to-indigo-600"
+                },
+                {
+                  step: "02", 
+                  title: "Design & Planning",
+                  desc: "Create detailed 2D floor plans and 3D visualizations to bring your ideas to life.",
+                  icon: Eye,
+                  color: "from-purple-500 to-pink-600"
+                },
+                {
+                  step: "03",
+                  title: "Material Selection",
+                  desc: "Choose the perfect materials, colors, and furnishings that match your style and budget.",
+                  icon: Palette,
+                  color: "from-green-500 to-teal-600"
+                },
+                {
+                  step: "04",
+                  title: "Implementation",
+                  desc: "Execute the design with our skilled craftsmen and ensure quality at every step.",
+                  icon: CheckCircle,
+                  color: "from-orange-500 to-red-600"
+                }
+              ].map((process, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: i * 0.2 }}
+                  viewport={{ once: true }}
+                  className="relative group"
+                >
+                  {/* Connecting Line */}
+                  {i < 3 && (
+                    <div className="hidden lg:block absolute top-20 left-full w-full h-0.5 bg-gradient-to-r from-indigo-200 to-purple-200 z-0"></div>
+                  )}
+                  
+                  <div className="relative z-10 text-center">
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className={`inline-block p-6 bg-gradient-to-br ${process.color} text-white rounded-3xl shadow-xl mb-6 relative`}
+                    >
+                      <process.icon size={32} />
+                      <div className="absolute -top-2 -right-2 bg-white text-gray-800 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shadow-lg">
+                        {process.step}
+                      </div>
+                    </motion.div>
+                    
+                    <h3 className="text-xl font-bold mb-3 text-gray-800">{process.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{process.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-24 bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.05"%3E%3Ccircle cx="20" cy="20" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
+        
+        <div className="relative max-w-7xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-20"
+          >
+            <h2 className="text-4xl sm:text-5xl font-extrabold mb-6 text-white">
+              What Our <span className="gradient-text">Clients Say</span>
+            </h2>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              Don't just take our word for it - hear from our satisfied clients about their experience with us
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-16">
+            {testimonials.map((testimonial, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.2 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5 }}
+                className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-3xl hover:bg-white/15 transition-all duration-500"
+              >
+                <div className="flex items-center mb-6">
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="w-16 h-16 rounded-full object-cover mr-4 border-2 border-indigo-400"
+                  />
+                  <div>
+                    <h4 className="text-xl font-bold text-white">{testimonial.name}</h4>
+                    <p className="text-indigo-300">{testimonial.role}</p>
+                  </div>
+                </div>
+                
+                <div className="flex mb-4">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} size={20} className="text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                
+                <div className="relative">
+                  <Quote className="absolute -top-2 -left-2 text-indigo-400/40" size={32} />
+                  <p className="text-gray-200 leading-relaxed pl-6 italic">
+                    "{testimonial.review}"
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Additional smaller testimonials in a carousel */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <Swiper
+              modules={[Pagination, Autoplay]}
+              spaceBetween={30}
+              slidesPerView={1}
+              pagination={{ clickable: true }}
+              autoplay={{ delay: 4000 }}
+              breakpoints={{
+                640: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 }
+              }}
+              className="pb-12"
+            >
+              {[
+                { name: "Meera Patel", review: "Exceptional attention to detail and creative solutions!" },
+                { name: "Arjun Kumar", review: "Transformed our office space beyond our expectations." },
+                { name: "Kavita Singh", review: "Professional team with amazing design sense." },
+                { name: "Rohit Sharma", review: "Quality work delivered on time and within budget." }
+              ].map((review, i) => (
+                <SwiperSlide key={i}>
+                  <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 rounded-2xl text-center">
+                    <p className="text-gray-300 mb-4">"{review.review}"</p>
+                    <h5 className="text-white font-semibold">{review.name}</h5>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full bg-[url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill-rule="evenodd"%3E%3Cg fill="%234f46e5" fill-opacity="0.03"%3E%3Cpath d="M50 50c0-5.5 4.5-10 10-10s10 4.5 10 10-4.5 10-10 10-10-4.5-10-10z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
+        
+        <div className="relative max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left Side - Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl sm:text-5xl font-extrabold mb-8 text-gray-800">
+                About <span className="gradient-text">RV Home Sol</span>
+              </h2>
+              
+              <div className="prose prose-lg text-gray-600 mb-8">
+                <p className="text-xl leading-relaxed mb-6">
+                  With over <strong>20 years of experience</strong> in the interior design industry, 
+                  RV Home Sol has been transforming spaces and exceeding client expectations across Rajasthan.
+                </p>
+                
+                <p className="leading-relaxed mb-6">
+                  Founded by <strong>Ram Vijay Sahani</strong>, we specialize in creating beautiful, 
+                  functional spaces that reflect your personality and lifestyle. Our comprehensive 
+                  approach combines traditional craftsmanship with modern design principles.
+                </p>
+                
+                <p className="leading-relaxed">
+                  From conceptual design to final implementation, we handle every aspect of your 
+                  project with meticulous attention to detail and unwavering commitment to quality.
+                </p>
+              </div>
+              
+              {/* Key Features */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                {[
+                  { icon: Award, title: "20+ Years Experience", desc: "Proven track record" },
+                  { icon: Users, title: "500+ Happy Clients", desc: "Satisfied customers" },
+                  { icon: CheckCircle, title: "Quality Assurance", desc: "Premium materials" },
+                  { icon: Clock, title: "Timely Delivery", desc: "On-schedule completion" }
+                ].map((feature, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                    viewport={{ once: true }}
+                    className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300"
+                  >
+                    <div className="p-3 bg-indigo-100 rounded-lg">
+                      <feature.icon size={24} className="text-indigo-600" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">{feature.title}</h4>
+                      <p className="text-sm text-gray-600">{feature.desc}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              
+              <motion.a
+                href="#contact"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300"
+              >
+                Work With Us
+                <ArrowRight size={20} />
+              </motion.a>
+            </motion.div>
+
+            {/* Right Side - Image/Visual */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              <div className="relative bg-gradient-to-br from-indigo-600 to-purple-600 rounded-3xl p-8 shadow-2xl">
+                <div className="bg-white rounded-2xl p-8">
+                  <div className="text-center mb-6">
+                    <div className="w-24 h-24 bg-gradient-to-br from-indigo-600 to-purple-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                      <HomeIcon size={40} className="text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-gray-800 mb-2">Ram Vijay Sahani</h3>
+                    <p className="text-indigo-600 font-semibold">Founder & Lead Designer</p>
+                  </div>
+                  
+                  <div className="space-y-4 text-center">
+                    <div className="p-4 bg-gray-50 rounded-xl">
+                      <div className="text-2xl font-bold text-indigo-600">20+</div>
+                      <div className="text-sm text-gray-600">Years Experience</div>
+                    </div>
+                    
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="p-3 bg-gray-50 rounded-lg">
+                        <div className="text-lg font-bold text-gray-800">500+</div>
+                        <div className="text-xs text-gray-600">Projects</div>
+                      </div>
+                      <div className="p-3 bg-gray-50 rounded-lg">
+                        <div className="text-lg font-bold text-gray-800">98%</div>
+                        <div className="text-xs text-gray-600">Satisfaction</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Decorative elements */}
+                <div className="absolute -top-4 -right-4 w-16 h-16 bg-yellow-400 rounded-full opacity-80 float-animation"></div>
+                <div className="absolute -bottom-6 -left-6 w-20 h-20 bg-pink-400 rounded-full opacity-60 float-animation" style={{ animationDelay: '2s' }}></div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact CTA Section */}
+      <section id="contact" className="py-24 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.1"%3E%3Ccircle cx="20" cy="20" r="1"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="relative max-w-4xl mx-auto px-6 text-center"
+        >
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            Ready to Transform Your Space?
+          </h2>
+          <p className="text-xl mb-12 text-white/90 leading-relaxed max-w-3xl mx-auto">
+            Let's bring your design dreams to life. Contact us today for a free consultation 
+            and discover how we can create the perfect space for you.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-12">
+            <motion.a
+              href="https://wa.me/917568807817"
+              whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255,255,255,0.3)" }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white text-indigo-600 px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-100 transition-all duration-300 flex items-center gap-2"
+            >
+              <Phone size={20} />
+              Call Now: +91 7568807817
+            </motion.a>
+            
+            <motion.a
+              href="mailto:ramvijaysahani49@gmail.com"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white/20 backdrop-blur-md border border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/30 transition-all duration-300 flex items-center gap-2"
+            >
+              <Mail size={20} />
+              Send Email
+            </motion.a>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { icon: Phone, title: "Call Us", info: "+91 7568807817", action: "tel:+917568807817" },
+              { icon: Mail, title: "Email Us", info: "ramvijaysahani49@gmail.com", action: "mailto:ramvijaysahani49@gmail.com" },
+              { icon: MapPin, title: "Visit Us", info: "Makrana, Rajasthan", action: "#" }
+            ].map((contact, i) => (
+              <motion.a
+                key={i}
+                href={contact.action}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: i * 0.2 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5 }}
+                className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl hover:bg-white/20 transition-all duration-300 block"
+              >
+                <contact.icon size={32} className="mx-auto mb-3" />
+                <h4 className="font-semibold mb-2">{contact.title}</h4>
+                <p className="text-white/80 text-sm">{contact.info}</p>
+              </motion.a>
+            ))}
+          </div>
+        </motion.div>
+      </section>
     </div>
   );
 }
